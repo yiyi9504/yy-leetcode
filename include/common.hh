@@ -2,6 +2,7 @@
 
 #include <iostream>  
 #include <functional>
+#include <limits.h>
 #include <string>
 #include <thread>
 #include <mutex> 
