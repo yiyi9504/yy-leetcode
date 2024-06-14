@@ -1,4 +1,6 @@
-#define i64 longlong
+#include "common.hh"
+
+#define i64 long long
 #define lc u<<1
 #define rc u<<1|1
 const int N = 1e5 + 5;
@@ -21,8 +23,9 @@ void pushdown(i64 u) { //下传
 }
 void build(i64 u, i64 l, i64 r) { //建树
 	tr[u] = {l, r, w[l], 0};
+    // std::cout << u << ": " << tr[u].sum << std::endl;
 	if (l == r) return;
-	i64 m = l + r >> 1;
+	i64 m = (l + r) >> 1;
 	build(lc, l, m);
 	build(rc, m + 1, r);
 	pushup(u);
@@ -33,7 +36,7 @@ void change(i64 u, i64 l, i64 r, i64 k) { //区修
 		tr[u].lazy += k;
 		return;
 	}
-	i64 m = tr[u].l + tr[u].r >> 1;
+	i64 m = (tr[u].l + tr[u].r) >> 1;
 	pushdown(u);
 	if (l <= m) change(lc, l, r, k);
 	if (r > m) change(rc, l, r, k);
@@ -42,7 +45,7 @@ void change(i64 u, i64 l, i64 r, i64 k) { //区修
 i64 query(i64 u, i64 l, i64 r) { //区查
 	if (l <= tr[u].l && tr[u].r <= r)
 		return tr[u].sum;
-	i64 m = tr[u].l + tr[u].r >> 1;
+	i64 m = (tr[u].l + tr[u].r) >> 1;
 	pushdown(u);
 	i64 sum = 0;
 	if (l <= m) sum += query(lc, l, r);
