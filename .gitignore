@@ -1,2 +1,5 @@
 .vscode/
 build/
+saif*
+test/input_file/
+*.DS_Store
