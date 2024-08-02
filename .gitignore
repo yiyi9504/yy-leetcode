@@ -1,5 +1,6 @@
 .vscode/
 build/
+面经/
 saif*
 test/input_file/
 *.DS_Store
